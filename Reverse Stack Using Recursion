@@ -1,0 +1,34 @@
+Problem statement
+Reverse a given stack of 'N' integers using recursion. You are required to make changes in the input parameter itself.
+
+Note: You are not allowed to use any extra space other than the internal stack space used due to recursion.
+
+Example:
+Input: [1,2,3,4,5] 
+Output: [5,4,3,2,1]
+
+Time complexity : o(N)+O(N) , Overall O(N)
+Space Complexity : O(N)+O(N)  Auxillary stack space and vector space 
+
+void func(stack<int> &stck, vector<int>&st)
+{
+    //base 
+      if(stck.empty())
+        return;
+
+    int var=stck.top();
+    st.push_back(var);
+    stck.pop();
+     func(stck,st);
+}
+void reverseStack(stack<int> &stck) {
+    
+   // stack<int>st;
+  vector<int> st;
+   func(stck,st);
+   int n=st.size();
+    for(int i=0;i<n;i++)
+    {
+        stck.push(st[i]);
+    }
+}
